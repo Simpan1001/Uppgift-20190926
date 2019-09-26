@@ -25,18 +25,20 @@ namespace WindowCalculator
             Number add = new Number();
             add.number1 = textBox1.Text;
             add.number2 = textBox2.Text;
+            textBox1.Clear();
+            textBox2.Clear();
 
             double a, b, c = 0;
             string d = "";
 
-            a = Convert.ToDouble(textBox1.Text);
-            b = Convert.ToDouble(textBox2.Text);
+            a = Convert.ToDouble(add.number1);
+            b = Convert.ToDouble(add.number2);
             c = a + b;
             d = Convert.ToString(c);
             add.result = d;
-            add.calcResult = textBox1.Text + " + " + textBox2.Text + " = " + d;
+            add.calcResult = add.number1 + " + " + add.number2 + " = " + d;
 
-            Numbers.Add(add.calcResult);
+            Numbers.Add(add);
             listBox1.Items.Add(add.calcResult);
         }
 
@@ -46,18 +48,20 @@ namespace WindowCalculator
             Number sub = new Number();
             sub.number1 = textBox1.Text;
             sub.number2 = textBox2.Text;
+            textBox1.Clear();
+            textBox2.Clear();
 
             double a, b, c = 0;
             string d = "";
 
-            a = Convert.ToDouble(textBox1.Text);
-            b = Convert.ToDouble(textBox2.Text);
+            a = Convert.ToDouble(sub.number1);
+            b = Convert.ToDouble(sub.number2);
             c = a - b;
             d = Convert.ToString(c);
             sub.result = d;
-            sub.calcResult = textBox1.Text + " - " + textBox2.Text + " = " + d;
+            sub.calcResult = sub.number1 + " - " + sub.number2 + " = " + d;
 
-            Numbers.Add(sub.calcResult);
+            Numbers.Add(sub);
             listBox1.Items.Add(sub.calcResult);
         }
 
@@ -67,18 +71,20 @@ namespace WindowCalculator
             Number mult = new Number();
             mult.number1 = textBox1.Text;
             mult.number2 = textBox2.Text;
+            textBox1.Clear();
+            textBox2.Clear();
 
             double a, b, c = 0;
             string d = "";
 
-            a = Convert.ToDouble(textBox1.Text);
-            b = Convert.ToDouble(textBox2.Text);
+            a = Convert.ToDouble(mult.number1);
+            b = Convert.ToDouble(mult.number2);
             c = a * b;
             d = Convert.ToString(c);
             mult.result = d;
-            mult.calcResult = textBox1.Text + " * " + textBox2.Text + " = " + d;
+            mult.calcResult = mult.number1 + " * " + mult.number2 + " = " + d;
 
-            Numbers.Add(mult.calcResult);
+            Numbers.Add(mult);
             listBox1.Items.Add(mult.calcResult);
         }
 
@@ -88,25 +94,30 @@ namespace WindowCalculator
             Number div = new Number();
             div.number1 = textBox1.Text;
             div.number2 = textBox2.Text;
+            textBox1.Clear();
+            textBox2.Clear();
 
             double a, b, c = 0;
             string d = "";
 
-            a = Convert.ToInt32(textBox1.Text);
-            b = Convert.ToInt32(textBox2.Text);
+            a = Convert.ToDouble(div.number1);
+            b = Convert.ToDouble(div.number2);
             c = a / b;
             d = Convert.ToString(c);
             div.result = d;
-            div.calcResult = textBox1.Text + " / " + textBox2.Text + " = " + d;
+            div.calcResult = div.number1 + " / " + div.number2 + " = " + d;
 
-            Numbers.Add(div.calcResult);
+            Numbers.Add(div);
             listBox1.Items.Add(div.calcResult);
         }
-    }
-    class Number {
-        public string number1 { get; set; }
-        public string number2 { get; set; }
-        public string result { get; set; }
-        public string calcResult { get; set; }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            foreach (Number q in Numbers)
+            {
+                listBox1.Items.Add(q.calcResult);
+            }
+        }
     }
 }
